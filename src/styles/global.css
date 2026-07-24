@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/* Self-hosted — no external font requests at runtime. */
+@import "@fontsource-variable/newsreader/index.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+@theme {
+  /* Ledger palette: petrol ground, mineral text, one brass accent. */
+  --color-ink: #0b1d22;
+  --color-ink-raised: #11292f;
+  --color-rule: #21414a;
+  --color-mist: #e7eeeb;
+  --color-mute: #8ca3a0;
+  --color-brass: #c4924b;
+
+  --font-display: "Newsreader Variable", ui-serif, Georgia, serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --text-docket: 0.6875rem;
+  --text-eyebrow: 0.75rem;
+  --text-lede: clamp(1rem, 0.94rem + 0.35vw, 1.1875rem);
+  --text-wordmark: clamp(3.25rem, 1.4rem + 8.2vw, 9.5rem);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    background-color: var(--color-ink);
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-mist);
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-brass);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  /* Load sequence: eyebrow, wordmark, lede, docket. */
+  .enter {
+    opacity: 0;
+    transform: translateY(0.75rem);
+    animation: enter 900ms var(--ease-out-expo) forwards;
+    animation-delay: var(--enter-delay, 0ms);
+  }
+
+  /* Signature: a brass segment travelling the manifest rule, like a line
+     item still in transit. */
+  .transit-rule {
+    position: relative;
+    height: 1px;
+    background-color: var(--color-rule);
+    overflow: hidden;
+  }
+
+  .transit-rule::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: -35%;
+    width: 35%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-brass) 55%,
+      transparent
+    );
+    animation: transit 7s linear infinite;
+  }
+
+  .pulse-dot {
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+}
+
+@keyframes enter {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes transit {
+  to {
+    inset-inline-start: 100%;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .transit-rule::after,
+  .pulse-dot {
+    animation: none;
+  }
+
+  .transit-rule::after {
+    inset-inline-start: 0;
+    width: 100%;
+    opacity: 0.5;
+  }
+}

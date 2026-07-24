@@ -1,0 +1,110 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../site";
+
+// Stamped at build time, so the docket never claims a date that isn't real.
+const now = new Date();
+const updated = now.toLocaleDateString("en-GB", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric",
+});
+---
+
+<Base>
+  <div class="relative isolate flex min-h-svh flex-col overflow-hidden">
+    <!-- Atmosphere: brass light off the top-left, film grain over everything. -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 -z-10"
+      style="background: radial-gradient(60rem 40rem at 12% -10%, rgba(196,146,75,0.14), transparent 60%), radial-gradient(48rem 32rem at 92% 108%, rgba(33,65,74,0.55), transparent 65%);"
+    >
+    </div>
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 -z-10 opacity-[0.035]"
+      style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"
+    >
+    </div>
+
+    <div class="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 py-8 sm:px-10 sm:py-12 lg:px-14">
+      <header class="enter flex items-center gap-5" style="--enter-delay: 0ms;">
+        <span
+          class="flex size-11 items-center justify-center border border-rule font-display text-lg text-brass"
+          aria-hidden="true">{SITE.monogram}</span
+        >
+        <span class="sr-only">{SITE.name}</span>
+        <span class="h-px flex-1 bg-rule"></span>
+      </header>
+
+      <main class="flex flex-1 flex-col justify-center py-16 sm:py-24">
+        <p
+          class="enter flex items-center gap-2.5 font-mono text-eyebrow tracking-[0.22em] text-mute uppercase"
+          style="--enter-delay: 120ms;"
+        >
+          <span class="pulse-dot size-1.5 rounded-full bg-brass" aria-hidden="true"></span>
+          {SITE.status}
+        </p>
+
+        <h1
+          class="enter mt-6 font-display text-wordmark leading-[0.86] font-medium tracking-[-0.035em] text-mist"
+          style="--enter-delay: 220ms;"
+        >
+          Has<br />Traders<span class="text-brass">.</span>
+        </h1>
+
+        <p
+          class="enter mt-8 max-w-[46ch] text-lede leading-relaxed text-mute"
+          style="--enter-delay: 340ms;"
+        >
+          We're building the full site. Until it's live, email us — the address
+          below reaches us directly.
+        </p>
+
+        <div class="enter mt-14 sm:mt-20" style="--enter-delay: 460ms;">
+          <div class="transit-rule" aria-hidden="true"></div>
+
+          <dl class="grid grid-cols-1 sm:grid-cols-3">
+            <div class="border-b border-rule py-5 sm:border-b-0 sm:pr-10">
+              <dt class="font-mono text-docket tracking-[0.18em] text-mute uppercase">
+                Status
+              </dt>
+              <dd class="mt-2 text-mist">{SITE.status}</dd>
+            </div>
+
+            <div
+              class="border-b border-rule py-5 sm:border-x sm:border-y-0 sm:px-10"
+            >
+              <dt class="font-mono text-docket tracking-[0.18em] text-mute uppercase">
+                Email
+              </dt>
+              <dd class="mt-2">
+                <a
+                  href={`mailto:${SITE.email}`}
+                  class="text-brass underline decoration-brass/30 underline-offset-[6px] transition-colors duration-200 hover:decoration-brass"
+                  >{SITE.email}</a
+                >
+              </dd>
+            </div>
+
+            <div class="py-5 sm:pl-10">
+              <dt class="font-mono text-docket tracking-[0.18em] text-mute uppercase">
+                Updated
+              </dt>
+              <dd class="mt-2 text-mist">
+                <time datetime={now.toISOString().slice(0, 10)}>{updated}</time>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </main>
+
+      <footer
+        class="enter font-mono text-docket tracking-[0.14em] text-mute uppercase"
+        style="--enter-delay: 580ms;"
+      >
+        &copy; {now.getFullYear()} {SITE.name}
+      </footer>
+    </div>
+  </div>
+</Base>
