@@ -73,29 +73,17 @@ const featured = PROJECTS.slice(0, 3);
       </div>
 
       <div>
-        <div class="relative isolate px-6 py-10 sm:px-10">
-          <div
-            aria-hidden="true"
-            class="bg-paper absolute inset-y-0 right-0 left-10 -z-10 sm:left-16"
-          >
-          </div>
-          <div
-            aria-hidden="true"
-            class="bg-navy absolute top-0 right-0 -z-10 h-20 w-20 sm:h-28 sm:w-28"
-          >
-          </div>
-          <img
-            src="/logo-mark.png"
-            alt={`${SITE.name} falcon emblem`}
-            width="800"
-            height="628"
-            fetchpriority="high"
-            class="enter mx-auto w-full max-w-md"
-            style="--enter-delay: 140ms;"
-          />
-        </div>
+        <img
+          src="/logo-mark.svg"
+          alt={`${SITE.name} falcon emblem`}
+          width="800"
+          height="628"
+          fetchpriority="high"
+          class="enter mx-auto w-full max-w-md"
+          style="--enter-delay: 140ms;"
+        />
         <p
-          class="enter mt-6 text-center text-xl font-bold tracking-tight sm:text-2xl"
+          class="enter mt-8 text-center text-xl font-bold tracking-tight sm:text-2xl"
           style="--enter-delay: 320ms;"
         >
           {SITE.tagline}
