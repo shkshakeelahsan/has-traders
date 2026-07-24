@@ -7,7 +7,7 @@ import { SITE } from "../site";
 
 <Base
   title="About the company"
-  description={`${ABOUT.intro} ${ABOUT.focus}`}
+  description="HAS Traders (SMC-Private) Limited — founded 2024. Integrated supply, events, marketing and technology delivery through one accountable partner."
 >
   <PageHero
     eyebrow="About the company"
@@ -15,8 +15,10 @@ import { SITE } from "../site";
     lede={ABOUT.intro}
   />
 
-  <section class="border-b border-rule bg-surface">
-    <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-2">
+  <section class="border-rule bg-surface border-b">
+    <div
+      class="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-2"
+    >
       <p class="text-lede leading-relaxed">{ABOUT.approach}</p>
       <p class="rule-mark text-2xl leading-snug font-bold sm:text-3xl">
         {ABOUT.focus}
@@ -25,18 +27,18 @@ import { SITE } from "../site";
   </section>
 
   <!-- Vision & mission -->
-  <section aria-labelledby="direction" class="border-b border-rule">
+  <section aria-labelledby="direction" class="border-rule border-b">
     <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8">
       <h2 id="direction" class="sr-only">Vision and mission</h2>
-      <div class="grid gap-px bg-rule md:grid-cols-2">
+      <div class="bg-rule grid gap-px md:grid-cols-2">
         <article class="bg-paper p-8 sm:p-10">
-          <p class="eyebrow">Vision</p>
+          <h3 class="eyebrow">Vision</h3>
           <p class="mt-5 text-2xl leading-snug font-bold sm:text-3xl">
             {ABOUT.vision}
           </p>
         </article>
         <article class="bg-paper p-8 sm:p-10">
-          <p class="eyebrow">Mission</p>
+          <h3 class="eyebrow">Mission</h3>
           <p class="mt-5 text-2xl leading-snug font-bold sm:text-3xl">
             {ABOUT.mission}
           </p>
@@ -46,12 +48,13 @@ import { SITE } from "../site";
   </section>
 
   <!-- Values -->
-  <section aria-labelledby="values" class="border-b border-rule bg-navy text-white">
+  <section
+    aria-labelledby="values"
+    class="border-rule bg-navy border-b text-white"
+  >
     <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8">
-      <p class="label text-eyebrow text-white/50 uppercase">
-        What we hold to
-      </p>
-      <h2 id="values" class="mt-4 max-w-2xl text-h2 font-bold">
+      <p class="eyebrow text-white/50">What we hold to</p>
+      <h2 id="values" class="text-h2 mt-4 max-w-2xl font-bold">
         Five values guide every engagement
       </h2>
       <dl class="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -59,7 +62,7 @@ import { SITE } from "../site";
           VALUES.map((value, index) => (
             <div class="border-t border-white/15 pt-5">
               <dt class="flex items-baseline gap-3 text-xl font-bold">
-                <span class="text-label text-crimson">
+                <span class="text-label text-crimson-tint">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 {value.name}
@@ -79,7 +82,7 @@ import { SITE } from "../site";
     <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8">
       <div class="rule-mark">
         <p class="eyebrow">Registration &amp; certification</p>
-        <h2 id="registration" class="mt-3 max-w-2xl text-h2 font-bold">
+        <h2 id="registration" class="text-h2 mt-3 max-w-2xl font-bold">
           Registered to deliver with confidence
         </h2>
       </div>
@@ -87,23 +90,21 @@ import { SITE } from "../site";
       <ul class="mt-12 grid gap-10 md:grid-cols-2">
         {
           CERTIFICATES.map((certificate) => (
-            <li class="flex flex-col gap-6 border border-rule p-6 sm:flex-row sm:p-8">
+            <li class="border-rule flex flex-col gap-6 border p-6 sm:flex-row sm:p-8">
               <img
                 src={certificate.src}
                 alt={certificate.title}
                 width="551"
                 height="781"
                 loading="lazy"
-                class="w-full max-w-[190px] self-start border border-rule bg-white"
+                class="border-rule w-full max-w-[190px] self-start border bg-white"
               />
               <div>
                 <h3 class="text-lg leading-snug font-bold">
                   {certificate.title}
                 </h3>
-                <p class="mt-2 label text-crimson ">
-                  {certificate.issuer}
-                </p>
-                <p class="mt-4 text-sm leading-relaxed text-mute">
+                <p class="label text-crimson mt-2">{certificate.issuer}</p>
+                <p class="text-mute mt-4 text-sm leading-relaxed">
                   {certificate.detail}
                 </p>
               </div>
@@ -112,10 +113,9 @@ import { SITE } from "../site";
         }
       </ul>
 
-      <p class="mt-10 max-w-2xl text-sm text-mute">
-        {SITE.legalName} was incorporated in {SITE.established} and operates
-        nationwide through its own teams and a network of specialist delivery
-        partners.
+      <p class="text-mute mt-10 max-w-2xl text-sm">
+        {SITE.legalName} was incorporated in {SITE.established} and operates nationwide
+        through its own teams and a network of specialist delivery partners.
       </p>
     </div>
   </section>

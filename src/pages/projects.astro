@@ -14,15 +14,18 @@ import { PROJECTS } from "../data/content";
     lede="A selection of programmes run for telecom operators, development organisations and industry clients."
   />
 
-  <section aria-label="Project gallery" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+  <section
+    aria-label="Project gallery"
+    class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20"
+  >
     <ul class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
       {
         PROJECTS.map((project) => (
           <li class="group">
-            <div class="overflow-hidden bg-rule">
+            <div class="bg-rule overflow-hidden">
               <img
                 src={project.image}
-                alt={`${project.title} — ${project.client}`}
+                alt=""
                 width="1000"
                 height="625"
                 loading="lazy"
@@ -30,12 +33,8 @@ import { PROJECTS } from "../data/content";
                 class="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] motion-reduce:transform-none"
               />
             </div>
-            <h2 class="mt-4 text-lg leading-snug font-bold">
-              {project.title}
-            </h2>
-            <p class="mt-1 label text-crimson ">
-              {project.client}
-            </p>
+            <h2 class="mt-4 text-lg leading-snug font-bold">{project.title}</h2>
+            <p class="label text-crimson mt-1">{project.client}</p>
           </li>
         ))
       }

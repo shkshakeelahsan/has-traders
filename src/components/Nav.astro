@@ -7,7 +7,7 @@ const isCurrent = (href: string) =>
 ---
 
 <header
-  class="sticky top-0 z-50 border-b border-rule bg-paper/90 backdrop-blur-md"
+  class="border-rule bg-paper/90 sticky top-0 z-50 border-b backdrop-blur-md"
 >
   <div class="mx-auto flex max-w-7xl items-center gap-6 px-5 py-3.5 sm:px-8">
     <a
@@ -39,7 +39,7 @@ const isCurrent = (href: string) =>
                 class:list={[
                   "link-underline text-[0.9375rem] font-medium transition-colors",
                   isCurrent(item.href)
-                    ? "text-crimson"
+                    ? "text-crimson underline underline-offset-[6px]"
                     : "text-mute hover:text-ink",
                 ]}
               >
@@ -53,21 +53,21 @@ const isCurrent = (href: string) =>
 
     <a
       href="/contact/"
-      class="ml-auto hidden bg-crimson px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-crimson-deep lg:ml-0 lg:block"
+      class="bg-crimson hover:bg-crimson-deep ml-auto hidden px-4 py-2.5 text-sm font-medium text-white transition-colors lg:ml-0 lg:block"
       >Start a project</a
     >
 
     <!-- No-JS disclosure menu for small screens. -->
     <details class="group relative ml-auto lg:hidden">
       <summary
-        class="flex cursor-pointer list-none items-center gap-2 border border-rule px-3 py-2 text-sm font-medium [&::-webkit-details-marker]:hidden"
+        class="border-rule flex cursor-pointer list-none items-center gap-2 border px-3 py-2 text-sm font-medium [&::-webkit-details-marker]:hidden"
       >
         <span class="group-open:hidden">Menu</span>
         <span class="hidden group-open:inline">Close</span>
       </summary>
       <nav
         aria-label="Main"
-        class="absolute right-0 mt-3 w-60 border border-rule bg-surface p-2 shadow-xl"
+        class="border-rule bg-surface absolute right-0 mt-3 w-60 border p-2 shadow-xl"
       >
         <ul>
           {

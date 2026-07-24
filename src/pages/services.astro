@@ -16,14 +16,16 @@ import { SITE } from "../site";
   />
 
   <!-- Index of service lines, so a long page stays navigable. -->
-  <nav aria-label="Service lines" class="border-b border-rule bg-surface">
-    <ul class="mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-2 px-5 py-5 sm:px-8">
+  <nav aria-label="Service lines" class="border-rule bg-surface border-b">
+    <ul
+      class="mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-2 px-5 py-5 sm:px-8"
+    >
       {
         SERVICES.map((service, index) => (
           <li>
             <a
               href={`#${service.slug}`}
-              class="link-underline label text-mute  hover:text-crimson"
+              class="link-underline label text-mute hover:text-crimson"
             >
               <span class="text-crimson">
                 {String(index + 1).padStart(2, "0")}
@@ -42,33 +44,28 @@ import { SITE } from "../site";
         <section
           id={service.slug}
           aria-labelledby={`${service.slug}-heading`}
-          class="grid gap-10 border-b border-rule py-16 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16"
+          class="border-rule grid gap-10 border-b py-16 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16"
         >
           <div class="lg:sticky lg:top-28 lg:self-start">
-            <p class="label text-crimson ">
+            <p class="label text-crimson">
               {String(index + 1).padStart(2, "0")}
             </p>
-            <h2
-              id={`${service.slug}-heading`}
-              class="mt-4 text-h2 leading-tight font-bold"
-            >
+            <h2 id={`${service.slug}-heading`} class="text-h2 mt-4 font-bold">
               {service.name}
             </h2>
             {service.partner && (
-              <p class="mt-4 inline-block border border-crimson px-3 py-1.5 label text-crimson ">
+              <p class="border-crimson label text-crimson mt-4 inline-block border px-3 py-1.5">
                 Delivered with {service.partner}
               </p>
             )}
-            <p class="mt-5 text-lede leading-relaxed text-mute">
+            <p class="text-lede text-mute mt-5 leading-relaxed">
               {service.summary}
             </p>
           </div>
 
           <div>
-            <h3 class="label text-mute ">
-              Core capabilities
-            </h3>
-            <ul class="mt-5 space-y-px bg-rule">
+            <h3 class="label text-mute">Core capabilities</h3>
+            <ul class="bg-rule mt-5 space-y-px">
               {service.capabilities.map((capability) => (
                 <li class="bg-paper py-4 text-sm leading-relaxed sm:text-base">
                   {capability}
@@ -83,12 +80,12 @@ import { SITE } from "../site";
 
   <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
     <div class="rule-mark flex flex-wrap items-end justify-between gap-6">
-      <h2 class="max-w-xl text-h2 font-bold">
+      <h2 class="text-h2 max-w-xl font-bold">
         Need several of these under one contract?
       </h2>
       <a
         href={`mailto:${SITE.email}`}
-        class="bg-crimson px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-crimson-deep"
+        class="bg-crimson hover:bg-crimson-deep px-6 py-3.5 text-sm font-medium text-white transition-colors"
         >Email {SITE.email}</a
       >
     </div>

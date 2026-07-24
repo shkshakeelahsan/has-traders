@@ -5,12 +5,13 @@ with Astro 7 + Tailwind 4. Content is transcribed from the company profile deck.
 
 ## Commands
 
-| Command           | Action                         |
-| ----------------- | ------------------------------ |
-| `npm install`     | Install dependencies           |
-| `npm run dev`     | Dev server on `localhost:4321` |
-| `npm run build`   | Build static site to `./dist/` |
-| `npm run preview` | Serve `./dist/` locally        |
+| Command           | Action                                    |
+| ----------------- | ----------------------------------------- |
+| `npm install`     | Install dependencies                      |
+| `npm run dev`     | Dev server on `localhost:4321`            |
+| `npm run build`   | Build static site to `./dist/`            |
+| `npm run preview` | Serve `./dist/` locally                   |
+| `npm run format`  | Format with Prettier (Astro + Tailwind)   |
 
 ## Editing content
 
@@ -43,13 +44,32 @@ Tokens live in the `@theme` block of `src/styles/global.css` and are used as
 Tailwind utilities:
 
 - `crimson` (`#b60b2c`) — sampled from the falcon mark, the only accent colour
+- `crimson-tint` — the crimson substitute for navy backgrounds, where the full
+  strength colour only reaches 2.5:1 contrast
 - `navy`, `paper`, `surface`, `ink`, `mute`, `rule` — structure and text
-- `font-display` (Archivo), `font-sans` (IBM Plex Sans), `font-mono`
-  (IBM Plex Mono, used for labels and eyebrows)
+- One typeface, Roboto, with weight as the contrast device. Two component
+  classes carry the small-caps labels: `.eyebrow` and `.label`.
+
+Sections on a crimson or navy background take an `.on-crimson` / `.on-navy`
+class, which switches the focus ring to white so it stays visible.
 
 Fonts are self-hosted via `@fontsource`, so pages make no external requests.
 No client-side JavaScript ships — the mobile menu is a native `<details>`
 disclosure.
+
+## SEO
+
+`astro.config.mjs` sets `site: "https://www.hastraders.com"`. Canonical tags,
+Open Graph URLs, the sitemap and `public/robots.txt` all derive from that host,
+so **if the site is served from a different origin, change it in both places**
+(`astro.config.mjs` and `robots.txt`) or every canonical will point at the wrong
+domain.
+
+- `Organization` JSON-LD is emitted from `src/layouts/Base.astro`, built from
+  `site.ts` and `content.ts`. It deliberately does not claim ISO 9001 — that
+  certificate belongs to DESI HATTI, the catering partner.
+- `public/og-image.png` (1200×630) is the social share card.
+- `@astrojs/sitemap` writes `sitemap-index.xml` at build time.
 
 ## Images
 

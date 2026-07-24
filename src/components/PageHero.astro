@@ -8,11 +8,11 @@ interface Props {
 const { eyebrow, title, lede } = Astro.props;
 ---
 
-<section class="border-b border-rule bg-surface">
+<section class="border-rule bg-surface border-b">
   <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
     <p class="eyebrow enter">{eyebrow}</p>
     <h1
-      class="enter mt-4 max-w-4xl text-h1 leading-[0.98] font-bold"
+      class="enter text-h1 mt-4 max-w-4xl leading-[0.98] font-bold"
       style="--enter-delay: 90ms;"
     >
       {title}
@@ -20,7 +20,7 @@ const { eyebrow, title, lede } = Astro.props;
     {
       lede && (
         <p
-          class="enter mt-6 max-w-2xl text-lede leading-relaxed text-mute"
+          class="enter text-lede text-mute mt-6 max-w-2xl leading-relaxed"
           style="--enter-delay: 180ms;"
         >
           {lede}

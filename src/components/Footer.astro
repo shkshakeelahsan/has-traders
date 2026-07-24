@@ -4,7 +4,7 @@ import { NAV, SITE } from "../site";
 const year = new Date().getFullYear();
 ---
 
-<footer class="mt-24 bg-navy text-white/80">
+<footer class="bg-navy mt-24 text-white/80">
   <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
     <div class="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr]">
       <div>
@@ -20,14 +20,13 @@ const year = new Date().getFullYear();
           {SITE.tagline}
         </p>
         <p class="mt-3 max-w-sm text-sm leading-relaxed">
-          {SITE.strapline} {SITE.subStrapline}
+          {SITE.strapline}
+          {SITE.subStrapline}
         </p>
       </div>
 
       <nav aria-label="Footer">
-        <h2 class="label text-white/50 ">
-          Pages
-        </h2>
+        <h2 class="label text-white/50">Pages</h2>
         <ul class="mt-4 space-y-2.5 text-sm">
           {
             NAV.map((item) => (
@@ -42,9 +41,7 @@ const year = new Date().getFullYear();
       </nav>
 
       <div>
-        <h2 class="label text-white/50 ">
-          Contact
-        </h2>
+        <h2 class="label text-white/50">Contact</h2>
         <ul class="mt-4 space-y-2.5 text-sm">
           {
             SITE.phones.map((phone) => (
@@ -56,7 +53,7 @@ const year = new Date().getFullYear();
                   {phone.number}
                 </a>
                 {phone.label && (
-                  <span class="block text-xs text-white/45">{phone.label}</span>
+                  <span class="block text-xs text-white/60">{phone.label}</span>
                 )}
               </li>
             ))
@@ -72,7 +69,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div
-      class="mt-14 flex flex-col gap-2 border-t border-white/10 pt-6 label text-white/45  sm:flex-row sm:items-center sm:justify-between"
+      class="label mt-14 flex flex-col gap-2 border-t border-white/10 pt-6 text-white/60 sm:flex-row sm:items-center sm:justify-between"
     >
       <span>&copy; {year} {SITE.legalName}</span>
       <span>Established {SITE.established} &middot; Pakistan</span>

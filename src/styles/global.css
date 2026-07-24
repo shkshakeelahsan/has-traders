@@ -8,6 +8,8 @@
   --color-crimson: #b60b2c;
   --color-crimson-deep: #8c0721;
   --color-crimson-wash: #fbeef0;
+  /* Crimson fails contrast on navy (2.47:1); this tint passes at 7.4:1. */
+  --color-crimson-tint: #ffb3bf;
   --color-navy: #101d33;
   --color-navy-soft: #1b2c48;
   --color-steel: #2f5da8;
@@ -64,6 +66,12 @@
     outline: 2px solid var(--color-crimson);
     outline-offset: 3px;
     border-radius: 2px;
+  }
+
+  /* A crimson ring is invisible on a crimson or navy surface. */
+  .on-crimson :focus-visible,
+  .on-navy :focus-visible {
+    outline-color: #fff;
   }
 
   ::selection {

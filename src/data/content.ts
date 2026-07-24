@@ -15,6 +15,9 @@ export const ABOUT = {
     "To deliver tailored supply, event, marketing and consultancy solutions through professionalism, integrity and strong client partnerships.",
 } as const;
 
+/** Fleet size quoted by MYSTIC, our transport partner. Stated once, used twice. */
+export const FLEET_SIZE = "1,000+";
+
 export const VALUES = [
   { name: "Integrity", detail: "Honest, transparent and ethical delivery" },
   {
@@ -90,11 +93,7 @@ export const SECTORS = [
   },
   {
     sector: "Public infrastructure",
-    clients: [
-      "Aab-e-Pak Authority",
-      "RUDA",
-      "Collaborative Heavy Industries",
-    ],
+    clients: ["Aab-e-Pak Authority", "RUDA", "Collaborative Heavy Industries"],
     delivered: [
       "Fleet management and site logistics",
       "Government of Punjab vehicles vinyl branding",

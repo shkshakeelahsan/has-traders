@@ -9,7 +9,7 @@ export const SITE = {
   strapline: "Integrated solutions. Reliable execution. Every time.",
   subStrapline: "One partner. Multiple capabilities.",
   description:
-    "HAS Traders supports public and private-sector clients across Pakistan with integrated supply, transport, events, marketing, technology and business services.",
+    "HAS Traders supports public and private-sector clients across Pakistan with integrated supply, transport, events, marketing and technology services.",
   established: 2024,
   email: "info@hastraders.com",
   website: "www.hastraders.com",

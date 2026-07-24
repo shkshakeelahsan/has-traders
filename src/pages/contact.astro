@@ -7,7 +7,7 @@ import { SERVICES } from "../data/content";
 
 <Base
   title="Contact us"
-  description={`Contact HAS Traders — ${SITE.email}, ${SITE.phones.map((phone) => phone.number).join(", ")}.`}
+  description={`Contact HAS Traders for supply, transport, events and print projects across Pakistan. Email ${SITE.email} or call ${SITE.phones[0].number}.`}
 >
   <PageHero
     eyebrow="Contact us"
@@ -15,12 +15,13 @@ import { SERVICES } from "../data/content";
     lede="Tell us what you need supplied, moved, printed or run — we'll come back with a plan and a price."
   />
 
-  <section aria-label="Contact details" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
-    <div class="grid gap-px bg-rule lg:grid-cols-3">
+  <section
+    aria-label="Contact details"
+    class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20"
+  >
+    <div class="bg-rule grid gap-px lg:grid-cols-3">
       <div class="bg-paper p-8 sm:p-10">
-        <h2 class="label text-mute ">
-          Call
-        </h2>
+        <h2 class="label text-mute">Call</h2>
         <ul class="mt-6 space-y-6">
           {
             SITE.phones.map((phone) => (
@@ -32,7 +33,9 @@ import { SERVICES } from "../data/content";
                   {phone.number}
                 </a>
                 {phone.label && (
-                  <span class="mt-1 block text-sm text-mute">{phone.label}</span>
+                  <span class="text-mute mt-1 block text-sm">
+                    {phone.label}
+                  </span>
                 )}
               </li>
             ))
@@ -41,28 +44,24 @@ import { SERVICES } from "../data/content";
       </div>
 
       <div class="bg-paper p-8 sm:p-10">
-        <h2 class="label text-mute ">
-          Email
-        </h2>
+        <h2 class="label text-mute">Email</h2>
         <a
           href={`mailto:${SITE.email}`}
-          class="link-underline mt-6 block text-xl font-bold break-all text-crimson sm:text-2xl"
+          class="link-underline text-crimson mt-6 block text-xl font-bold break-all sm:text-2xl"
           >{SITE.email}</a
         >
-        <p class="mt-3 text-sm text-mute">
+        <p class="text-mute mt-3 text-sm">
           Include your timeline and delivery locations and we can scope the work
           on the first reply.
         </p>
       </div>
 
       <div class="bg-paper p-8 sm:p-10">
-        <h2 class="label text-mute ">
-          Web
-        </h2>
+        <h2 class="label text-mute">Web</h2>
         <p class="mt-6 text-xl font-bold sm:text-2xl">
           {SITE.website}
         </p>
-        <p class="mt-3 text-sm text-mute">
+        <p class="text-mute mt-3 text-sm">
           {SITE.legalName}, established {SITE.established}. Operating nationwide
           across Pakistan.
         </p>
@@ -74,7 +73,7 @@ import { SERVICES } from "../data/content";
       <ul class="mt-8 flex flex-wrap gap-3">
         {
           SERVICES.map((service) => (
-            <li class="border border-rule px-4 py-2.5 text-sm text-mute">
+            <li class="border-rule text-mute border px-4 py-2.5 text-sm">
               {service.name}
             </li>
           ))

@@ -19,7 +19,7 @@ const cityCount = FOOTPRINT.reduce(
     lede={`Programmes executed in ${cityCount} cities across ${FOOTPRINT.length} regions — from Gilgit Baltistan and Azad Kashmir down to Sindh and Balochistan.`}
   />
 
-  <section aria-label="Coverage map" class="border-b border-rule bg-surface">
+  <section aria-label="Coverage map" class="border-rule bg-surface border-b">
     <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8">
       <img
         src="/img/footprint-map.webp"
@@ -27,14 +27,17 @@ const cityCount = FOOTPRINT.reduce(
         width="1672"
         height="941"
         loading="lazy"
-        class="w-full border border-rule"
+        class="border-rule w-full border"
       />
     </div>
   </section>
 
-  <section aria-labelledby="cities" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+  <section
+    aria-labelledby="cities"
+    class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20"
+  >
     <h2 id="cities" class="eyebrow">Cities served</h2>
-    <div class="mt-10 grid gap-px bg-rule md:grid-cols-2 lg:grid-cols-3">
+    <div class="bg-rule mt-10 grid gap-px md:grid-cols-2 lg:grid-cols-3">
       {
         FOOTPRINT.map((region) => (
           <section class="bg-paper p-6 sm:p-8">
@@ -44,7 +47,7 @@ const cityCount = FOOTPRINT.reduce(
                 {String(region.cities.length).padStart(2, "0")}
               </span>
             </h3>
-            <ul class="mt-5 space-y-1.5 text-sm text-mute">
+            <ul class="text-mute mt-5 space-y-1.5 text-sm">
               {region.cities.map((city) => (
                 <li>{city}</li>
               ))}

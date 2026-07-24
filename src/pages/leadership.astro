@@ -4,44 +4,42 @@ import PageHero from "../components/PageHero.astro";
 import { LEADERSHIP } from "../data/content";
 ---
 
-<Base
-  title="Leadership"
-  description={LEADERSHIP.narrative[0]}
->
+<Base title="Leadership" description={LEADERSHIP.narrative[0]}>
   <PageHero
     eyebrow="Leadership"
     title={LEADERSHIP.headline}
     lede={LEADERSHIP.narrative[0]}
   />
 
-  <section aria-label="Leadership team" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+  <section
+    aria-label="Leadership team"
+    class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20"
+  >
     <ul class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
       {
         LEADERSHIP.people.map((person) => (
           <li>
             <img
               src={person.image}
-              alt={person.name}
+              alt=""
               width="640"
               height="640"
               loading="lazy"
               class="aspect-square w-full object-cover"
             />
             <h2 class="mt-4 text-lg font-bold">{person.name}</h2>
-            <p class="mt-1 label text-crimson ">
-              {person.role}
-            </p>
+            <p class="label text-crimson mt-1">{person.role}</p>
           </li>
         ))
       }
     </ul>
   </section>
 
-  <section class="border-t border-rule bg-surface">
+  <section class="border-rule bg-surface border-t">
     <div class="mx-auto max-w-3xl px-5 py-16 sm:px-8">
       {
         LEADERSHIP.narrative.map((paragraph) => (
-          <p class="mt-6 text-lede leading-relaxed text-mute first:mt-0">
+          <p class="text-lede text-mute mt-6 leading-relaxed first:mt-0">
             {paragraph}
           </p>
         ))
