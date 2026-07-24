@@ -13,10 +13,7 @@ export const SITE = {
   established: 2024,
   email: "info@hastraders.com",
   website: "www.hastraders.com",
-  phones: [
-    { number: "+92 300 840 1800", label: "Point of contact" },
-    { number: "+92 314 999 5554", label: "Alternative" },
-  ],
+  phones: [{ number: "+92 314 999 5554", label: null }],
 } as const;
 
 export const NAV = [

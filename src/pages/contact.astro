@@ -31,7 +31,9 @@ import { SERVICES } from "../data/content";
                 >
                   {phone.number}
                 </a>
-                <span class="mt-1 block text-sm text-mute">{phone.label}</span>
+                {phone.label && (
+                  <span class="mt-1 block text-sm text-mute">{phone.label}</span>
+                )}
               </li>
             ))
           }

@@ -55,7 +55,9 @@ const year = new Date().getFullYear();
                 >
                   {phone.number}
                 </a>
-                <span class="block text-xs text-white/45">{phone.label}</span>
+                {phone.label && (
+                  <span class="block text-xs text-white/45">{phone.label}</span>
+                )}
               </li>
             ))
           }
