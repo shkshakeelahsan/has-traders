@@ -1,54 +1,74 @@
 # has-traders
 
-Holding page for Has Traders. One static route that says the site is under
-construction and gives a contact email. Built with Astro 7 + Tailwind 4, output
-is plain static files.
+Company website for HAS Traders (SMC-Private) Limited. Eight static pages built
+with Astro 7 + Tailwind 4. Content is transcribed from the company profile deck.
 
 ## Commands
 
-| Command           | Action                                   |
-| ----------------- | ---------------------------------------- |
-| `npm install`     | Install dependencies                     |
-| `npm run dev`     | Dev server on `localhost:4321`           |
-| `npm run build`   | Build static site to `./dist/`           |
-| `npm run preview` | Serve `./dist/` locally                  |
+| Command           | Action                         |
+| ----------------- | ------------------------------ |
+| `npm install`     | Install dependencies           |
+| `npm run dev`     | Dev server on `localhost:4321` |
+| `npm run build`   | Build static site to `./dist/` |
+| `npm run preview` | Serve `./dist/` locally        |
 
 ## Editing content
 
-All copy that changes lives in `src/site.ts` — company name, contact email,
-status line, meta title and description. Change it there, not in the page.
+Two files hold everything writable — pages contain no copy of their own.
 
-The **Updated** date on the page is stamped at build time. Rebuild to refresh it.
+- `src/site.ts` — company name, tagline, phone numbers, email, navigation
+- `src/data/content.ts` — about, values, certificates, clients, sector ledger,
+  services, projects, footprint cities, leadership
 
-## Structure
+Change a phone number in `src/site.ts` and it updates the header, footer and
+contact page at once. Add a city to `FOOTPRINT` and the counts on the home and
+footprint pages recalculate on the next build.
 
-```text
-src/
-├── layouts/Base.astro   # html shell, meta tags, favicon
-├── pages/index.astro    # the holding page
-├── styles/global.css    # design tokens + animations
-└── site.ts              # editable content
-public/favicon.svg
-```
+## Pages
 
-Design tokens (colors, fonts, type scale) are defined once in the `@theme` block
-of `src/styles/global.css` and used as Tailwind utilities (`text-brass`,
-`bg-ink`, `font-display`, …).
+| Route         | Source of content                                  |
+| ------------- | -------------------------------------------------- |
+| `/`           | Positioning, capabilities, scale, clients, work     |
+| `/about/`     | Company intro, vision, mission, values, certificates|
+| `/clients/`   | Client list and the sector ledger table             |
+| `/services/`  | Five service lines with partner attribution         |
+| `/projects/`  | Nine delivered programmes                           |
+| `/footprint/` | Coverage map and cities by region                   |
+| `/leadership/`| Leadership team and narrative                       |
+| `/contact/`   | Phones, email, web                                  |
 
-Fonts are self-hosted via `@fontsource`, so the page makes no external requests.
+## Design system
+
+Tokens live in the `@theme` block of `src/styles/global.css` and are used as
+Tailwind utilities:
+
+- `crimson` (`#b60b2c`) — sampled from the falcon mark, the only accent colour
+- `navy`, `paper`, `surface`, `ink`, `mute`, `rule` — structure and text
+- `font-display` (Archivo), `font-sans` (IBM Plex Sans), `font-mono`
+  (IBM Plex Mono, used for labels and eyebrows)
+
+Fonts are self-hosted via `@fontsource`, so pages make no external requests.
+No client-side JavaScript ships — the mobile menu is a native `<details>`
+disclosure.
+
+## Images
+
+Source assets were extracted from the profile deck and optimised into
+`public/img/` as WebP. To regenerate or add images, drop the originals in and
+match the existing sizes: projects 16:10 at 1000px, portraits square at 640px.
 
 ## Deploy
 
-`npm run build` produces `dist/` — static HTML, CSS, fonts. Upload it anywhere:
-Vercel, Netlify, Cloudflare Pages, GitHub Pages, or an nginx docroot. No Node
-runtime needed in production.
+`npm run build` produces `dist/` — static HTML, CSS, fonts and images. Upload it
+anywhere: Vercel, Netlify, Cloudflare Pages, GitHub Pages or an nginx docroot.
+No Node runtime needed in production.
 
-If deploying to a fixed domain, set it in `astro.config.mjs` so canonical and
-Open Graph URLs are absolute:
+Set the live domain in `astro.config.mjs` so canonical and Open Graph URLs are
+absolute:
 
 ```js
 export default defineConfig({
-  site: "https://your-domain.com",
+  site: "https://hastraders.com",
   // ...
 });
 ```

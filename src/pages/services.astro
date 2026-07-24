@@ -1,0 +1,96 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { SERVICES } from "../data/content";
+import { SITE } from "../site";
+---
+
+<Base
+  title="Our services"
+  description="Supply and general order, transportation and mobility, catering and events, creative design and print, and technology services — delivered nationwide."
+>
+  <PageHero
+    eyebrow="Our services"
+    title="One partner. Multiple capabilities."
+    lede="Five service lines, delivered by our own teams and by specialist partner companies working under our management."
+  />
+
+  <!-- Index of service lines, so a long page stays navigable. -->
+  <nav aria-label="Service lines" class="border-b border-rule bg-surface">
+    <ul class="mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-2 px-5 py-5 sm:px-8">
+      {
+        SERVICES.map((service, index) => (
+          <li>
+            <a
+              href={`#${service.slug}`}
+              class="link-underline font-mono text-label tracking-[0.14em] text-mute uppercase hover:text-crimson"
+            >
+              <span class="text-crimson">
+                {String(index + 1).padStart(2, "0")}
+              </span>{" "}
+              {service.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    {
+      SERVICES.map((service, index) => (
+        <section
+          id={service.slug}
+          aria-labelledby={`${service.slug}-heading`}
+          class="grid gap-10 border-b border-rule py-16 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16"
+        >
+          <div class="lg:sticky lg:top-28 lg:self-start">
+            <p class="font-mono text-label tracking-[0.2em] text-crimson uppercase">
+              {String(index + 1).padStart(2, "0")}
+            </p>
+            <h2
+              id={`${service.slug}-heading`}
+              class="mt-4 text-h2 leading-tight font-bold"
+            >
+              {service.name}
+            </h2>
+            {service.partner && (
+              <p class="mt-4 inline-block border border-crimson px-3 py-1.5 font-mono text-label tracking-[0.14em] text-crimson uppercase">
+                Delivered with {service.partner}
+              </p>
+            )}
+            <p class="mt-5 text-lede leading-relaxed text-mute">
+              {service.summary}
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-mono text-label tracking-[0.16em] text-mute uppercase">
+              Core capabilities
+            </h3>
+            <ul class="mt-5 space-y-px bg-rule">
+              {service.capabilities.map((capability) => (
+                <li class="bg-paper py-4 text-sm leading-relaxed sm:text-base">
+                  {capability}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+    <div class="rule-mark flex flex-wrap items-end justify-between gap-6">
+      <h2 class="max-w-xl text-h2 font-bold">
+        Need several of these under one contract?
+      </h2>
+      <a
+        href={`mailto:${SITE.email}`}
+        class="bg-crimson px-6 py-3.5 font-mono text-eyebrow tracking-[0.14em] text-white uppercase transition-colors hover:bg-crimson-deep"
+        >Email {SITE.email}</a
+      >
+    </div>
+  </section>
+</Base>

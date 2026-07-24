@@ -1,0 +1,100 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { CLIENTS, SECTORS } from "../data/content";
+---
+
+<Base
+  title="Our clients"
+  description="HAS Traders supports international organizations, public infrastructure, industry, FMCG, telecom and relief programmes across Pakistan."
+>
+  <PageHero
+    eyebrow="Our clients"
+    title="Supporting leading institutions and brands"
+    lede="Through our network of delivery partners, we serve international organizations, government bodies, industry and consumer brands — a portfolio that highlights our versatility and proven execution."
+  />
+
+  <section aria-labelledby="wall" class="border-b border-rule bg-surface">
+    <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+      <h2 id="wall" class="eyebrow">Organisations served</h2>
+      <ul class="mt-8 grid gap-px bg-rule sm:grid-cols-2 lg:grid-cols-4">
+        {
+          CLIENTS.map((client) => (
+            <li class="bg-surface px-5 py-4 text-sm transition-colors hover:bg-crimson-wash">
+              {client}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- The sector ledger: sector, clients, what we delivered, what came of it. -->
+  <section aria-labelledby="ledger">
+    <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+      <div class="rule-mark">
+        <p class="eyebrow">Sector ledger</p>
+        <h2 id="ledger" class="mt-3 max-w-3xl text-h2 font-bold">
+          What we delivered, and what came of it
+        </h2>
+      </div>
+
+      <div class="mt-12 hidden grid-cols-[0.8fr_0.9fr_1.2fr_1.2fr] gap-8 border-b border-ink/20 pb-3 lg:grid">
+        {
+          ["Sector", "Representative clients", "Services delivered", "Progress / outcome"].map(
+            (heading) => (
+              <p class="font-mono text-label tracking-[0.16em] text-mute uppercase">
+                {heading}
+              </p>
+            ),
+          )
+        }
+      </div>
+
+      <ul>
+        {
+          SECTORS.map((row) => (
+            <li class="grid gap-6 border-b border-rule py-8 lg:grid-cols-[0.8fr_0.9fr_1.2fr_1.2fr] lg:gap-8">
+              <h3 class="font-display text-xl leading-snug font-bold">
+                {row.sector}
+              </h3>
+
+              <div>
+                <p class="font-mono text-label tracking-[0.16em] text-mute uppercase lg:hidden">
+                  Clients
+                </p>
+                <ul class="mt-2 space-y-1 text-sm text-mute lg:mt-0">
+                  {row.clients.map((client) => (
+                    <li>{client}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <p class="font-mono text-label tracking-[0.16em] text-mute uppercase lg:hidden">
+                  Delivered
+                </p>
+                <ul class="mt-2 space-y-2 text-sm leading-relaxed lg:mt-0">
+                  {row.delivered.map((item) => (
+                    <li class="border-l-2 border-crimson pl-3">{item}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <p class="font-mono text-label tracking-[0.16em] text-mute uppercase lg:hidden">
+                  Outcome
+                </p>
+                <ul class="mt-2 space-y-2 text-sm leading-relaxed text-mute lg:mt-0">
+                  {row.outcome.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Base>

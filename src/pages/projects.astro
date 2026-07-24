@@ -1,0 +1,44 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { PROJECTS } from "../data/content";
+---
+
+<Base
+  title="Projects"
+  description="Events, training and outreach programmes delivered for telecom operators, development organisations and industry clients across Pakistan."
+>
+  <PageHero
+    eyebrow="Projects"
+    title="Delivered across events, training and outreach"
+    lede="A selection of programmes run for telecom operators, development organisations and industry clients."
+  />
+
+  <section aria-label="Project gallery" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+    <ul class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        PROJECTS.map((project) => (
+          <li class="group">
+            <div class="overflow-hidden bg-rule">
+              <img
+                src={project.image}
+                alt={`${project.title} — ${project.client}`}
+                width="1000"
+                height="625"
+                loading="lazy"
+                decoding="async"
+                class="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] motion-reduce:transform-none"
+              />
+            </div>
+            <h2 class="mt-4 font-display text-lg leading-snug font-bold">
+              {project.title}
+            </h2>
+            <p class="mt-1 font-mono text-label tracking-[0.14em] text-crimson uppercase">
+              {project.client}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

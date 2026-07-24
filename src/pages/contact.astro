@@ -1,0 +1,83 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { SITE } from "../site";
+import { SERVICES } from "../data/content";
+---
+
+<Base
+  title="Contact us"
+  description={`Contact HAS Traders — ${SITE.email}, ${SITE.phones.map((phone) => phone.number).join(", ")}.`}
+>
+  <PageHero
+    eyebrow="Contact us"
+    title="Let's deliver your next project together."
+    lede="Tell us what you need supplied, moved, printed or run — we'll come back with a plan and a price."
+  />
+
+  <section aria-label="Contact details" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+    <div class="grid gap-px bg-rule lg:grid-cols-3">
+      <div class="bg-paper p-8 sm:p-10">
+        <h2 class="font-mono text-label tracking-[0.16em] text-mute uppercase">
+          Call
+        </h2>
+        <ul class="mt-6 space-y-6">
+          {
+            SITE.phones.map((phone) => (
+              <li>
+                <a
+                  href={`tel:${phone.number.replace(/\s/g, "")}`}
+                  class="link-underline font-display text-xl font-bold sm:text-2xl"
+                >
+                  {phone.number}
+                </a>
+                <span class="mt-1 block text-sm text-mute">{phone.label}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="bg-paper p-8 sm:p-10">
+        <h2 class="font-mono text-label tracking-[0.16em] text-mute uppercase">
+          Email
+        </h2>
+        <a
+          href={`mailto:${SITE.email}`}
+          class="link-underline mt-6 block font-display text-xl font-bold break-all text-crimson sm:text-2xl"
+          >{SITE.email}</a
+        >
+        <p class="mt-3 text-sm text-mute">
+          Include your timeline and delivery locations and we can scope the work
+          on the first reply.
+        </p>
+      </div>
+
+      <div class="bg-paper p-8 sm:p-10">
+        <h2 class="font-mono text-label tracking-[0.16em] text-mute uppercase">
+          Web
+        </h2>
+        <p class="mt-6 font-display text-xl font-bold sm:text-2xl">
+          {SITE.website}
+        </p>
+        <p class="mt-3 text-sm text-mute">
+          {SITE.legalName}, established {SITE.established}. Operating nationwide
+          across Pakistan.
+        </p>
+      </div>
+    </div>
+
+    <div class="rule-mark mt-16">
+      <h2 class="text-h2 font-bold">What we can take on</h2>
+      <ul class="mt-8 flex flex-wrap gap-3">
+        {
+          SERVICES.map((service) => (
+            <li class="border border-rule px-4 py-2.5 text-sm text-mute">
+              {service.name}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Base>

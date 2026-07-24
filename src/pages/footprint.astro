@@ -1,0 +1,57 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { FOOTPRINT } from "../data/content";
+
+const cityCount = FOOTPRINT.reduce(
+  (total, region) => total + region.cities.length,
+  0,
+);
+---
+
+<Base
+  title="Our footprint"
+  description={`Delivery across ${cityCount} cities in ${FOOTPRINT.length} regions of Pakistan, from Gilgit Baltistan to Sindh.`}
+>
+  <PageHero
+    eyebrow="Our footprint"
+    title="Delivery across Pakistan"
+    lede={`Programmes executed in ${cityCount} cities across ${FOOTPRINT.length} regions — from Gilgit Baltistan and Azad Kashmir down to Sindh and Balochistan.`}
+  />
+
+  <section aria-label="Coverage map" class="border-b border-rule bg-surface">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8">
+      <img
+        src="/img/footprint-map.webp"
+        alt={`Map of Pakistan showing HAS Traders delivery locations across ${FOOTPRINT.map((region) => region.region).join(", ")}`}
+        width="1672"
+        height="941"
+        loading="lazy"
+        class="w-full border border-rule"
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="cities" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+    <h2 id="cities" class="eyebrow">Cities served</h2>
+    <div class="mt-10 grid gap-px bg-rule md:grid-cols-2 lg:grid-cols-3">
+      {
+        FOOTPRINT.map((region) => (
+          <section class="bg-paper p-6 sm:p-8">
+            <h3 class="flex items-baseline justify-between gap-4 font-display text-xl font-bold">
+              {region.region}
+              <span class="font-mono text-label text-crimson">
+                {String(region.cities.length).padStart(2, "0")}
+              </span>
+            </h3>
+            <ul class="mt-5 space-y-1.5 text-sm text-mute">
+              {region.cities.map((city) => (
+                <li>{city}</li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+</Base>

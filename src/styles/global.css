@@ -1,93 +1,130 @@
 @import "tailwindcss";
 
 /* Self-hosted — no external font requests at runtime. */
-@import "@fontsource-variable/newsreader/index.css";
+@import "@fontsource-variable/archivo/index.css";
 @import "@fontsource/ibm-plex-sans/400.css";
 @import "@fontsource/ibm-plex-sans/500.css";
 @import "@fontsource/ibm-plex-mono/400.css";
 @import "@fontsource/ibm-plex-mono/500.css";
 
 @theme {
-  /* Ledger palette: petrol ground, mineral text, one brass accent. */
-  --color-ink: #0b1d22;
-  --color-ink-raised: #11292f;
-  --color-rule: #21414a;
-  --color-mist: #e7eeeb;
-  --color-mute: #8ca3a0;
-  --color-brass: #c4924b;
+  /* Crimson is sampled from the HAS Traders falcon mark. */
+  --color-crimson: #b60b2c;
+  --color-crimson-deep: #8c0721;
+  --color-crimson-wash: #fbeef0;
+  --color-navy: #101d33;
+  --color-navy-soft: #1b2c48;
+  --color-steel: #2f5da8;
 
-  --font-display: "Newsreader Variable", ui-serif, Georgia, serif;
+  --color-paper: #f7f5f1;
+  --color-surface: #ffffff;
+  --color-ink: #16181d;
+  --color-mute: #5d6472;
+  --color-rule: #e3ded5;
+
+  --font-display: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
 
-  --text-docket: 0.6875rem;
+  --text-label: 0.6875rem;
   --text-eyebrow: 0.75rem;
-  --text-lede: clamp(1rem, 0.94rem + 0.35vw, 1.1875rem);
-  --text-wordmark: clamp(3.25rem, 1.4rem + 8.2vw, 9.5rem);
+  --text-lede: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-h2: clamp(1.75rem, 1.35rem + 1.6vw, 2.75rem);
+  --text-h1: clamp(2.25rem, 1.5rem + 3.2vw, 4.25rem);
+  --text-display: clamp(2.75rem, 1.4rem + 5.4vw, 6rem);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
   html {
-    background-color: var(--color-ink);
-    color-scheme: dark;
+    background-color: var(--color-paper);
+    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
     font-family: var(--font-sans);
-    color: var(--color-mist);
+    color: var(--color-ink);
     text-rendering: optimizeLegibility;
   }
 
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  /* Keep in-page anchors clear of the sticky header. */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
   :focus-visible {
-    outline: 2px solid var(--color-brass);
+    outline: 2px solid var(--color-crimson);
     outline-offset: 3px;
     border-radius: 2px;
   }
 
   ::selection {
-    background-color: var(--color-brass);
-    color: var(--color-ink);
+    background-color: var(--color-crimson);
+    color: #fff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
 @layer components {
-  /* Load sequence: eyebrow, wordmark, lede, docket. */
+  /* Structural device used site-wide: a mono label sitting on a hairline,
+     the way a line item is labelled on a delivery docket. */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-crimson);
+  }
+
+  .rule-mark {
+    position: relative;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .rule-mark::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 3.5rem;
+    height: 2px;
+    background-color: var(--color-crimson);
+  }
+
   .enter {
     opacity: 0;
-    transform: translateY(0.75rem);
-    animation: enter 900ms var(--ease-out-expo) forwards;
+    transform: translateY(0.6rem);
+    animation: enter 800ms var(--ease-out-expo) forwards;
     animation-delay: var(--enter-delay, 0ms);
   }
 
-  /* Signature: a brass segment travelling the manifest rule, like a line
-     item still in transit. */
-  .transit-rule {
-    position: relative;
-    height: 1px;
-    background-color: var(--color-rule);
-    overflow: hidden;
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 280ms var(--ease-out-expo);
   }
 
-  .transit-rule::after {
-    content: "";
-    position: absolute;
-    inset-block: 0;
-    inset-inline-start: -35%;
-    width: 35%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--color-brass) 55%,
-      transparent
-    );
-    animation: transit 7s linear infinite;
-  }
-
-  .pulse-dot {
-    animation: pulse 2.6s ease-in-out infinite;
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
   }
 }
 
@@ -98,22 +135,6 @@
   }
 }
 
-@keyframes transit {
-  to {
-    inset-inline-start: 100%;
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.25;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .enter {
     opacity: 1;
@@ -121,14 +142,7 @@
     animation: none;
   }
 
-  .transit-rule::after,
-  .pulse-dot {
-    animation: none;
-  }
-
-  .transit-rule::after {
-    inset-inline-start: 0;
-    width: 100%;
-    opacity: 0.5;
+  .link-underline {
+    transition: none;
   }
 }

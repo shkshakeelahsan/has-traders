@@ -1,110 +1,265 @@
 ---
 import Base from "../layouts/Base.astro";
 import { SITE } from "../site";
+import {
+  ABOUT,
+  CLIENTS,
+  FOOTPRINT,
+  PROJECTS,
+  SECTORS,
+  SERVICES,
+} from "../data/content";
 
-// Stamped at build time, so the docket never claims a date that isn't real.
-const now = new Date();
-const updated = now.toLocaleDateString("en-GB", {
-  day: "2-digit",
-  month: "short",
-  year: "numeric",
-});
+const cityCount = FOOTPRINT.reduce(
+  (total, region) => total + region.cities.length,
+  0,
+);
+const regionCount = FOOTPRINT.length;
+
+const stats = [
+  { value: String(cityCount), label: `Cities across ${regionCount} regions` },
+  { value: "1,000+", label: "GPS-tracked vehicles in the partner fleet" },
+  { value: String(CLIENTS.length), label: "Client organisations served" },
+  { value: "ISO 9001", label: "Certified catering operations" },
+];
+
+const featured = PROJECTS.slice(0, 3);
 ---
 
-<Base>
-  <div class="relative isolate flex min-h-svh flex-col overflow-hidden">
-    <!-- Atmosphere: brass light off the top-left, film grain over everything. -->
+<Base title={SITE.name} description={SITE.description}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-rule bg-surface">
     <div
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-0 -z-10"
-      style="background: radial-gradient(60rem 40rem at 12% -10%, rgba(196,146,75,0.14), transparent 60%), radial-gradient(48rem 32rem at 92% 108%, rgba(33,65,74,0.55), transparent 65%);"
+      class="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-28"
     >
-    </div>
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-0 -z-10 opacity-[0.035]"
-      style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"
-    >
-    </div>
-
-    <div class="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 py-8 sm:px-10 sm:py-12 lg:px-14">
-      <header class="enter flex items-center gap-5" style="--enter-delay: 0ms;">
-        <span
-          class="flex size-11 items-center justify-center border border-rule font-display text-lg text-brass"
-          aria-hidden="true">{SITE.monogram}</span
-        >
-        <span class="sr-only">{SITE.name}</span>
-        <span class="h-px flex-1 bg-rule"></span>
-      </header>
-
-      <main class="flex flex-1 flex-col justify-center py-16 sm:py-24">
-        <p
-          class="enter flex items-center gap-2.5 font-mono text-eyebrow tracking-[0.22em] text-mute uppercase"
-          style="--enter-delay: 120ms;"
-        >
-          <span class="pulse-dot size-1.5 rounded-full bg-brass" aria-hidden="true"></span>
-          {SITE.status}
+      <div>
+        <p class="eyebrow enter">
+          Established {SITE.established} &middot; Pakistan
         </p>
-
         <h1
-          class="enter mt-6 font-display text-wordmark leading-[0.86] font-medium tracking-[-0.035em] text-mist"
-          style="--enter-delay: 220ms;"
+          class="enter mt-5 text-display leading-[0.92] font-bold"
+          style="--enter-delay: 90ms;"
         >
-          Has<br />Traders<span class="text-brass">.</span>
+          Integrated solutions.<br />
+          <span class="text-crimson">Reliable execution.</span><br />
+          Every time.
         </h1>
-
         <p
-          class="enter mt-8 max-w-[46ch] text-lede leading-relaxed text-mute"
-          style="--enter-delay: 340ms;"
+          class="enter mt-7 max-w-xl text-lede leading-relaxed text-mute"
+          style="--enter-delay: 180ms;"
         >
-          We're building the full site. Until it's live, email us — the address
-          below reaches us directly.
+          {ABOUT.intro}
         </p>
-
-        <div class="enter mt-14 sm:mt-20" style="--enter-delay: 460ms;">
-          <div class="transit-rule" aria-hidden="true"></div>
-
-          <dl class="grid grid-cols-1 sm:grid-cols-3">
-            <div class="border-b border-rule py-5 sm:border-b-0 sm:pr-10">
-              <dt class="font-mono text-docket tracking-[0.18em] text-mute uppercase">
-                Status
-              </dt>
-              <dd class="mt-2 text-mist">{SITE.status}</dd>
-            </div>
-
-            <div
-              class="border-b border-rule py-5 sm:border-x sm:border-y-0 sm:px-10"
-            >
-              <dt class="font-mono text-docket tracking-[0.18em] text-mute uppercase">
-                Email
-              </dt>
-              <dd class="mt-2">
-                <a
-                  href={`mailto:${SITE.email}`}
-                  class="text-brass underline decoration-brass/30 underline-offset-[6px] transition-colors duration-200 hover:decoration-brass"
-                  >{SITE.email}</a
-                >
-              </dd>
-            </div>
-
-            <div class="py-5 sm:pl-10">
-              <dt class="font-mono text-docket tracking-[0.18em] text-mute uppercase">
-                Updated
-              </dt>
-              <dd class="mt-2 text-mist">
-                <time datetime={now.toISOString().slice(0, 10)}>{updated}</time>
-              </dd>
-            </div>
-          </dl>
+        <div
+          class="enter mt-9 flex flex-wrap items-center gap-4"
+          style="--enter-delay: 260ms;"
+        >
+          <a
+            href="/contact/"
+            class="bg-crimson px-6 py-3.5 font-mono text-eyebrow tracking-[0.14em] text-white uppercase transition-colors hover:bg-crimson-deep"
+            >Start a project</a
+          >
+          <a
+            href="/services/"
+            class="border border-ink/15 px-6 py-3.5 font-mono text-eyebrow tracking-[0.14em] uppercase transition-colors hover:border-ink hover:bg-paper"
+            >What we do</a
+          >
         </div>
-      </main>
+      </div>
 
-      <footer
-        class="enter font-mono text-docket tracking-[0.14em] text-mute uppercase"
-        style="--enter-delay: 580ms;"
-      >
-        &copy; {now.getFullYear()} {SITE.name}
-      </footer>
+      <div>
+        <div class="relative isolate px-6 py-10 sm:px-10">
+          <div
+            aria-hidden="true"
+            class="absolute inset-y-0 right-0 left-10 -z-10 bg-paper sm:left-16"
+          >
+          </div>
+          <div
+            aria-hidden="true"
+            class="absolute top-0 right-0 -z-10 h-20 w-20 bg-navy sm:h-28 sm:w-28"
+          >
+          </div>
+          <img
+            src="/logo-mark.png"
+            alt={`${SITE.name} falcon emblem`}
+            width="800"
+            height="628"
+            fetchpriority="high"
+            class="enter mx-auto w-full max-w-md"
+            style="--enter-delay: 140ms;"
+          />
+        </div>
+        <p
+          class="enter mt-6 text-center font-display text-xl font-bold tracking-tight sm:text-2xl"
+          style="--enter-delay: 320ms;"
+        >
+          {SITE.tagline}
+        </p>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Capability strip -->
+  <section aria-labelledby="capabilities" class="border-b border-rule">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8">
+      <h2 id="capabilities" class="eyebrow">One partner, multiple capabilities</h2>
+      <ul class="mt-8 grid gap-px bg-rule sm:grid-cols-2 lg:grid-cols-5">
+        {
+          SERVICES.map((service) => (
+            <li class="bg-paper">
+              <a
+                href="/services/"
+                class="group block h-full p-5 transition-colors hover:bg-surface"
+              >
+                <span class="font-display text-lg leading-snug font-bold">
+                  {service.name}
+                </span>
+                {service.partner && (
+                  <span class="mt-2 block font-mono text-label tracking-[0.14em] text-crimson uppercase">
+                    with {service.partner}
+                  </span>
+                )}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Scale -->
+  <section aria-labelledby="scale" class="bg-navy text-white">
+    <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+      <h2 id="scale" class="font-mono text-eyebrow tracking-[0.2em] text-white/50 uppercase">
+        Delivery at scale
+      </h2>
+      <dl class="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          stats.map((stat) => (
+            <div class="border-t border-white/15 pt-5">
+              <dt class="sr-only">{stat.label}</dt>
+              <dd>
+                <span class="block font-display text-4xl font-bold tracking-tight sm:text-5xl">
+                  {stat.value}
+                </span>
+                <span class="mt-2 block text-sm text-white/65">{stat.label}</span>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- Sector ledger preview -->
+  <section aria-labelledby="sectors" class="border-b border-rule">
+    <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+      <div class="rule-mark flex flex-wrap items-end justify-between gap-4">
+        <h2 id="sectors" class="max-w-2xl text-h2 font-bold">
+          A portfolio of relevant projects highlighting our versatility and proven
+          execution
+        </h2>
+        <a
+          href="/clients/"
+          class="link-underline font-mono text-eyebrow tracking-[0.14em] text-crimson uppercase"
+          >All sectors</a
+        >
+      </div>
+
+      <ul class="mt-12 space-y-px bg-rule">
+        {
+          SECTORS.slice(0, 3).map((row) => (
+            <li class="grid gap-4 bg-paper py-7 md:grid-cols-[0.9fr_1.1fr_1fr] md:gap-10">
+              <h3 class="font-display text-xl font-bold">{row.sector}</h3>
+              <p class="text-sm leading-relaxed text-mute">
+                {row.clients.join(" · ")}
+              </p>
+              <p class="text-sm leading-relaxed text-mute">
+                {row.delivered[0]}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section aria-labelledby="clients" class="border-b border-rule bg-surface">
+    <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+      <div class="rule-mark">
+        <p class="eyebrow">Clients</p>
+        <h2 id="clients" class="mt-3 max-w-3xl text-h2 font-bold">
+          Supporting leading institutions and brands through our network of
+          delivery partners
+        </h2>
+      </div>
+      <ul class="mt-10 flex flex-wrap gap-x-3 gap-y-3">
+        {
+          CLIENTS.map((client) => (
+            <li class="border border-rule px-4 py-2.5 text-sm text-mute transition-colors hover:border-crimson hover:text-ink">
+              {client}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects preview -->
+  <section aria-labelledby="work" class="border-b border-rule">
+    <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+      <div class="rule-mark flex flex-wrap items-end justify-between gap-4">
+        <h2 id="work" class="text-h2 font-bold">Recent delivery</h2>
+        <a
+          href="/projects/"
+          class="link-underline font-mono text-eyebrow tracking-[0.14em] text-crimson uppercase"
+          >All projects</a
+        >
+      </div>
+      <ul class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          featured.map((project) => (
+            <li>
+              <img
+                src={project.image}
+                alt={`${project.title} — ${project.client}`}
+                width="1000"
+                height="625"
+                loading="lazy"
+                class="aspect-[16/10] w-full object-cover"
+              />
+              <h3 class="mt-4 font-display text-lg font-bold">{project.title}</h3>
+              <p class="mt-1 font-mono text-label tracking-[0.14em] text-crimson uppercase">
+                {project.client}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="bg-crimson text-white">
+    <div
+      class="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-16 sm:px-8 lg:flex-row lg:items-center lg:justify-between"
+    >
+      <h2 class="max-w-xl text-h2 leading-tight font-bold">
+        Let's deliver your next project together.
+      </h2>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href={`mailto:${SITE.email}`}
+          class="bg-white px-6 py-3.5 font-mono text-eyebrow tracking-[0.14em] text-crimson uppercase transition-colors hover:bg-paper"
+          >{SITE.email}</a
+        >
+        <a
+          href="/contact/"
+          class="border border-white/50 px-6 py-3.5 font-mono text-eyebrow tracking-[0.14em] uppercase transition-colors hover:bg-white/10"
+          >Contact details</a
+        >
+      </div>
+    </div>
+  </section>
 </Base>

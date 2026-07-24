@@ -1,0 +1,31 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  lede?: string;
+}
+
+const { eyebrow, title, lede } = Astro.props;
+---
+
+<section class="border-b border-rule bg-surface">
+  <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+    <p class="eyebrow enter">{eyebrow}</p>
+    <h1
+      class="enter mt-4 max-w-4xl text-h1 leading-[0.98] font-bold"
+      style="--enter-delay: 90ms;"
+    >
+      {title}
+    </h1>
+    {
+      lede && (
+        <p
+          class="enter mt-6 max-w-2xl text-lede leading-relaxed text-mute"
+          style="--enter-delay: 180ms;"
+        >
+          {lede}
+        </p>
+      )
+    }
+  </div>
+</section>
