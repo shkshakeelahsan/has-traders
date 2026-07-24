@@ -23,7 +23,7 @@ import { SITE } from "../site";
           <li>
             <a
               href={`#${service.slug}`}
-              class="link-underline font-mono text-label tracking-[0.14em] text-mute uppercase hover:text-crimson"
+              class="link-underline label text-mute  hover:text-crimson"
             >
               <span class="text-crimson">
                 {String(index + 1).padStart(2, "0")}
@@ -45,7 +45,7 @@ import { SITE } from "../site";
           class="grid gap-10 border-b border-rule py-16 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16"
         >
           <div class="lg:sticky lg:top-28 lg:self-start">
-            <p class="font-mono text-label tracking-[0.2em] text-crimson uppercase">
+            <p class="label text-crimson ">
               {String(index + 1).padStart(2, "0")}
             </p>
             <h2
@@ -55,7 +55,7 @@ import { SITE } from "../site";
               {service.name}
             </h2>
             {service.partner && (
-              <p class="mt-4 inline-block border border-crimson px-3 py-1.5 font-mono text-label tracking-[0.14em] text-crimson uppercase">
+              <p class="mt-4 inline-block border border-crimson px-3 py-1.5 label text-crimson ">
                 Delivered with {service.partner}
               </p>
             )}
@@ -65,7 +65,7 @@ import { SITE } from "../site";
           </div>
 
           <div>
-            <h3 class="font-mono text-label tracking-[0.16em] text-mute uppercase">
+            <h3 class="label text-mute ">
               Core capabilities
             </h3>
             <ul class="mt-5 space-y-px bg-rule">
@@ -88,7 +88,7 @@ import { SITE } from "../site";
       </h2>
       <a
         href={`mailto:${SITE.email}`}
-        class="bg-crimson px-6 py-3.5 font-mono text-eyebrow tracking-[0.14em] text-white uppercase transition-colors hover:bg-crimson-deep"
+        class="bg-crimson px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-crimson-deep"
         >Email {SITE.email}</a
       >
     </div>

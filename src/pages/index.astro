@@ -56,12 +56,12 @@ const featured = PROJECTS.slice(0, 3);
         >
           <a
             href="/contact/"
-            class="bg-crimson px-6 py-3.5 font-mono text-eyebrow tracking-[0.14em] text-white uppercase transition-colors hover:bg-crimson-deep"
+            class="bg-crimson px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-crimson-deep"
             >Start a project</a
           >
           <a
             href="/services/"
-            class="border border-ink/15 px-6 py-3.5 font-mono text-eyebrow tracking-[0.14em] uppercase transition-colors hover:border-ink hover:bg-paper"
+            class="border border-ink/15 px-6 py-3.5 text-sm font-medium transition-colors hover:border-ink hover:bg-paper"
             >What we do</a
           >
         </div>
@@ -90,7 +90,7 @@ const featured = PROJECTS.slice(0, 3);
           />
         </div>
         <p
-          class="enter mt-6 text-center font-display text-xl font-bold tracking-tight sm:text-2xl"
+          class="enter mt-6 text-center text-xl font-bold tracking-tight sm:text-2xl"
           style="--enter-delay: 320ms;"
         >
           {SITE.tagline}
@@ -111,11 +111,11 @@ const featured = PROJECTS.slice(0, 3);
                 href="/services/"
                 class="group block h-full p-5 transition-colors hover:bg-surface"
               >
-                <span class="font-display text-lg leading-snug font-bold">
+                <span class="text-lg leading-snug font-bold">
                   {service.name}
                 </span>
                 {service.partner && (
-                  <span class="mt-2 block font-mono text-label tracking-[0.14em] text-crimson uppercase">
+                  <span class="mt-2 block label text-crimson ">
                     with {service.partner}
                   </span>
                 )}
@@ -130,7 +130,7 @@ const featured = PROJECTS.slice(0, 3);
   <!-- Scale -->
   <section aria-labelledby="scale" class="bg-navy text-white">
     <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
-      <h2 id="scale" class="font-mono text-eyebrow tracking-[0.2em] text-white/50 uppercase">
+      <h2 id="scale" class="label text-eyebrow text-white/50 uppercase">
         Delivery at scale
       </h2>
       <dl class="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -139,7 +139,7 @@ const featured = PROJECTS.slice(0, 3);
             <div class="border-t border-white/15 pt-5">
               <dt class="sr-only">{stat.label}</dt>
               <dd>
-                <span class="block font-display text-4xl font-bold tracking-tight sm:text-5xl">
+                <span class="block text-4xl font-bold tracking-tight sm:text-5xl">
                   {stat.value}
                 </span>
                 <span class="mt-2 block text-sm text-white/65">{stat.label}</span>
@@ -161,7 +161,7 @@ const featured = PROJECTS.slice(0, 3);
         </h2>
         <a
           href="/clients/"
-          class="link-underline font-mono text-eyebrow tracking-[0.14em] text-crimson uppercase"
+          class="link-underline label text-eyebrow text-crimson uppercase"
           >All sectors</a
         >
       </div>
@@ -170,7 +170,7 @@ const featured = PROJECTS.slice(0, 3);
         {
           SECTORS.slice(0, 3).map((row) => (
             <li class="grid gap-4 bg-paper py-7 md:grid-cols-[0.9fr_1.1fr_1fr] md:gap-10">
-              <h3 class="font-display text-xl font-bold">{row.sector}</h3>
+              <h3 class="text-xl font-bold">{row.sector}</h3>
               <p class="text-sm leading-relaxed text-mute">
                 {row.clients.join(" · ")}
               </p>
@@ -213,7 +213,7 @@ const featured = PROJECTS.slice(0, 3);
         <h2 id="work" class="text-h2 font-bold">Recent delivery</h2>
         <a
           href="/projects/"
-          class="link-underline font-mono text-eyebrow tracking-[0.14em] text-crimson uppercase"
+          class="link-underline label text-eyebrow text-crimson uppercase"
           >All projects</a
         >
       </div>
@@ -229,8 +229,8 @@ const featured = PROJECTS.slice(0, 3);
                 loading="lazy"
                 class="aspect-[16/10] w-full object-cover"
               />
-              <h3 class="mt-4 font-display text-lg font-bold">{project.title}</h3>
-              <p class="mt-1 font-mono text-label tracking-[0.14em] text-crimson uppercase">
+              <h3 class="mt-4 text-lg font-bold">{project.title}</h3>
+              <p class="mt-1 label text-crimson ">
                 {project.client}
               </p>
             </li>
@@ -251,12 +251,12 @@ const featured = PROJECTS.slice(0, 3);
       <div class="flex flex-wrap gap-4">
         <a
           href={`mailto:${SITE.email}`}
-          class="bg-white px-6 py-3.5 font-mono text-eyebrow tracking-[0.14em] text-crimson uppercase transition-colors hover:bg-paper"
+          class="bg-white px-6 py-3.5 text-sm font-medium text-crimson transition-colors hover:bg-paper"
           >{SITE.email}</a
         >
         <a
           href="/contact/"
-          class="border border-white/50 px-6 py-3.5 font-mono text-eyebrow tracking-[0.14em] uppercase transition-colors hover:bg-white/10"
+          class="border border-white/50 px-6 py-3.5 text-sm font-medium transition-colors hover:bg-white/10"
           >Contact details</a
         >
       </div>

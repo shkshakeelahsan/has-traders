@@ -43,7 +43,7 @@ import { CLIENTS, SECTORS } from "../data/content";
         {
           ["Sector", "Representative clients", "Services delivered", "Progress / outcome"].map(
             (heading) => (
-              <p class="font-mono text-label tracking-[0.16em] text-mute uppercase">
+              <p class="label text-mute ">
                 {heading}
               </p>
             ),
@@ -55,12 +55,12 @@ import { CLIENTS, SECTORS } from "../data/content";
         {
           SECTORS.map((row) => (
             <li class="grid gap-6 border-b border-rule py-8 lg:grid-cols-[0.8fr_0.9fr_1.2fr_1.2fr] lg:gap-8">
-              <h3 class="font-display text-xl leading-snug font-bold">
+              <h3 class="text-xl leading-snug font-bold">
                 {row.sector}
               </h3>
 
               <div>
-                <p class="font-mono text-label tracking-[0.16em] text-mute uppercase lg:hidden">
+                <p class="label text-mute  lg:hidden">
                   Clients
                 </p>
                 <ul class="mt-2 space-y-1 text-sm text-mute lg:mt-0">
@@ -71,7 +71,7 @@ import { CLIENTS, SECTORS } from "../data/content";
               </div>
 
               <div>
-                <p class="font-mono text-label tracking-[0.16em] text-mute uppercase lg:hidden">
+                <p class="label text-mute  lg:hidden">
                   Delivered
                 </p>
                 <ul class="mt-2 space-y-2 text-sm leading-relaxed lg:mt-0">
@@ -82,7 +82,7 @@ import { CLIENTS, SECTORS } from "../data/content";
               </div>
 
               <div>
-                <p class="font-mono text-label tracking-[0.16em] text-mute uppercase lg:hidden">
+                <p class="label text-mute  lg:hidden">
                   Outcome
                 </p>
                 <ul class="mt-2 space-y-2 text-sm leading-relaxed text-mute lg:mt-0">

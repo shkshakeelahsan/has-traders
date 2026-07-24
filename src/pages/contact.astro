@@ -18,7 +18,7 @@ import { SERVICES } from "../data/content";
   <section aria-label="Contact details" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
     <div class="grid gap-px bg-rule lg:grid-cols-3">
       <div class="bg-paper p-8 sm:p-10">
-        <h2 class="font-mono text-label tracking-[0.16em] text-mute uppercase">
+        <h2 class="label text-mute ">
           Call
         </h2>
         <ul class="mt-6 space-y-6">
@@ -27,7 +27,7 @@ import { SERVICES } from "../data/content";
               <li>
                 <a
                   href={`tel:${phone.number.replace(/\s/g, "")}`}
-                  class="link-underline font-display text-xl font-bold sm:text-2xl"
+                  class="link-underline text-xl font-bold sm:text-2xl"
                 >
                   {phone.number}
                 </a>
@@ -41,12 +41,12 @@ import { SERVICES } from "../data/content";
       </div>
 
       <div class="bg-paper p-8 sm:p-10">
-        <h2 class="font-mono text-label tracking-[0.16em] text-mute uppercase">
+        <h2 class="label text-mute ">
           Email
         </h2>
         <a
           href={`mailto:${SITE.email}`}
-          class="link-underline mt-6 block font-display text-xl font-bold break-all text-crimson sm:text-2xl"
+          class="link-underline mt-6 block text-xl font-bold break-all text-crimson sm:text-2xl"
           >{SITE.email}</a
         >
         <p class="mt-3 text-sm text-mute">
@@ -56,10 +56,10 @@ import { SERVICES } from "../data/content";
       </div>
 
       <div class="bg-paper p-8 sm:p-10">
-        <h2 class="font-mono text-label tracking-[0.16em] text-mute uppercase">
+        <h2 class="label text-mute ">
           Web
         </h2>
-        <p class="mt-6 font-display text-xl font-bold sm:text-2xl">
+        <p class="mt-6 text-xl font-bold sm:text-2xl">
           {SITE.website}
         </p>
         <p class="mt-3 text-sm text-mute">

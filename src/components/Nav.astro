@@ -23,7 +23,7 @@ const isCurrent = (href: string) =>
         class="h-8 w-auto sm:h-9"
         fetchpriority="high"
       />
-      <span class="font-display text-lg leading-none font-bold tracking-tight">
+      <span class="text-lg leading-none font-bold tracking-tight">
         HAS <span class="text-crimson">Traders</span>
       </span>
     </a>
@@ -37,7 +37,7 @@ const isCurrent = (href: string) =>
                 href={item.href}
                 aria-current={isCurrent(item.href) ? "page" : undefined}
                 class:list={[
-                  "link-underline font-mono text-eyebrow tracking-[0.14em] uppercase transition-colors",
+                  "link-underline text-[0.9375rem] font-medium transition-colors",
                   isCurrent(item.href)
                     ? "text-crimson"
                     : "text-mute hover:text-ink",
@@ -53,14 +53,14 @@ const isCurrent = (href: string) =>
 
     <a
       href="/contact/"
-      class="ml-auto hidden bg-crimson px-4 py-2.5 font-mono text-eyebrow tracking-[0.14em] text-white uppercase transition-colors hover:bg-crimson-deep lg:ml-0 lg:block"
+      class="ml-auto hidden bg-crimson px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-crimson-deep lg:ml-0 lg:block"
       >Start a project</a
     >
 
     <!-- No-JS disclosure menu for small screens. -->
     <details class="group relative ml-auto lg:hidden">
       <summary
-        class="flex cursor-pointer list-none items-center gap-2 border border-rule px-3 py-2 font-mono text-eyebrow tracking-[0.14em] uppercase [&::-webkit-details-marker]:hidden"
+        class="flex cursor-pointer list-none items-center gap-2 border border-rule px-3 py-2 text-sm font-medium [&::-webkit-details-marker]:hidden"
       >
         <span class="group-open:hidden">Menu</span>
         <span class="hidden group-open:inline">Close</span>
@@ -77,7 +77,7 @@ const isCurrent = (href: string) =>
                   href={item.href}
                   aria-current={isCurrent(item.href) ? "page" : undefined}
                   class:list={[
-                    "block px-3 py-2.5 font-mono text-eyebrow tracking-[0.14em] uppercase",
+                    "block px-3 py-2.5 text-sm font-medium",
                     isCurrent(item.href)
                       ? "bg-crimson-wash text-crimson"
                       : "text-mute hover:bg-paper hover:text-ink",

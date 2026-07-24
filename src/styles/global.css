@@ -1,11 +1,7 @@
 @import "tailwindcss";
 
-/* Self-hosted — no external font requests at runtime. */
-@import "@fontsource-variable/archivo/index.css";
-@import "@fontsource/ibm-plex-sans/400.css";
-@import "@fontsource/ibm-plex-sans/500.css";
-@import "@fontsource/ibm-plex-mono/400.css";
-@import "@fontsource/ibm-plex-mono/500.css";
+/* One family, self-hosted. Weight axis only — no external requests. */
+@import "@fontsource-variable/roboto/wght.css";
 
 @theme {
   /* Crimson is sampled from the HAS Traders falcon mark. */
@@ -22,16 +18,16 @@
   --color-mute: #5d6472;
   --color-rule: #e3ded5;
 
-  --font-display: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  --font-sans:
+    "Roboto Variable", "Roboto", ui-sans-serif, system-ui, -apple-system,
+    sans-serif;
 
-  --text-label: 0.6875rem;
-  --text-eyebrow: 0.75rem;
-  --text-lede: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
-  --text-h2: clamp(1.75rem, 1.35rem + 1.6vw, 2.75rem);
-  --text-h1: clamp(2.25rem, 1.5rem + 3.2vw, 4.25rem);
-  --text-display: clamp(2.75rem, 1.4rem + 5.4vw, 6rem);
+  --text-label: 0.75rem;
+  --text-eyebrow: 0.8125rem;
+  --text-lede: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --text-h2: clamp(1.625rem, 1.3rem + 1.3vw, 2.375rem);
+  --text-h1: clamp(2rem, 1.5rem + 2.2vw, 3.25rem);
+  --text-display: clamp(2.25rem, 1.5rem + 3.4vw, 4.25rem);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -46,14 +42,16 @@
   body {
     font-family: var(--font-sans);
     color: var(--color-ink);
-    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1,
   h2,
   h3 {
-    font-family: var(--font-display);
-    letter-spacing: -0.025em;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
 
@@ -81,14 +79,21 @@
 }
 
 @layer components {
-  /* Structural device used site-wide: a mono label sitting on a hairline,
-     the way a line item is labelled on a delivery docket. */
+  /* Section label: small, uppercase, lightly tracked. Used site-wide. */
   .eyebrow {
-    font-family: var(--font-mono);
     font-size: var(--text-eyebrow);
-    letter-spacing: 0.2em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-crimson);
+  }
+
+  /* Smaller sibling of .eyebrow for captions inside cards. */
+  .label {
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   .rule-mark {

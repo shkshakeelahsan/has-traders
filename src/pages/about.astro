@@ -18,7 +18,7 @@ import { SITE } from "../site";
   <section class="border-b border-rule bg-surface">
     <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-2">
       <p class="text-lede leading-relaxed">{ABOUT.approach}</p>
-      <p class="rule-mark font-display text-2xl leading-snug font-bold sm:text-3xl">
+      <p class="rule-mark text-2xl leading-snug font-bold sm:text-3xl">
         {ABOUT.focus}
       </p>
     </div>
@@ -31,13 +31,13 @@ import { SITE } from "../site";
       <div class="grid gap-px bg-rule md:grid-cols-2">
         <article class="bg-paper p-8 sm:p-10">
           <p class="eyebrow">Vision</p>
-          <p class="mt-5 font-display text-2xl leading-snug font-bold sm:text-3xl">
+          <p class="mt-5 text-2xl leading-snug font-bold sm:text-3xl">
             {ABOUT.vision}
           </p>
         </article>
         <article class="bg-paper p-8 sm:p-10">
           <p class="eyebrow">Mission</p>
-          <p class="mt-5 font-display text-2xl leading-snug font-bold sm:text-3xl">
+          <p class="mt-5 text-2xl leading-snug font-bold sm:text-3xl">
             {ABOUT.mission}
           </p>
         </article>
@@ -48,7 +48,7 @@ import { SITE } from "../site";
   <!-- Values -->
   <section aria-labelledby="values" class="border-b border-rule bg-navy text-white">
     <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8">
-      <p class="font-mono text-eyebrow tracking-[0.2em] text-white/50 uppercase">
+      <p class="label text-eyebrow text-white/50 uppercase">
         What we hold to
       </p>
       <h2 id="values" class="mt-4 max-w-2xl text-h2 font-bold">
@@ -58,8 +58,8 @@ import { SITE } from "../site";
         {
           VALUES.map((value, index) => (
             <div class="border-t border-white/15 pt-5">
-              <dt class="flex items-baseline gap-3 font-display text-xl font-bold">
-                <span class="font-mono text-label text-crimson">
+              <dt class="flex items-baseline gap-3 text-xl font-bold">
+                <span class="text-label text-crimson">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 {value.name}
@@ -97,10 +97,10 @@ import { SITE } from "../site";
                 class="w-full max-w-[190px] self-start border border-rule bg-white"
               />
               <div>
-                <h3 class="font-display text-lg leading-snug font-bold">
+                <h3 class="text-lg leading-snug font-bold">
                   {certificate.title}
                 </h3>
-                <p class="mt-2 font-mono text-label tracking-[0.14em] text-crimson uppercase">
+                <p class="mt-2 label text-crimson ">
                   {certificate.issuer}
                 </p>
                 <p class="mt-4 text-sm leading-relaxed text-mute">

@@ -38,9 +38,9 @@ const cityCount = FOOTPRINT.reduce(
       {
         FOOTPRINT.map((region) => (
           <section class="bg-paper p-6 sm:p-8">
-            <h3 class="flex items-baseline justify-between gap-4 font-display text-xl font-bold">
+            <h3 class="flex items-baseline justify-between gap-4 text-xl font-bold">
               {region.region}
-              <span class="font-mono text-label text-crimson">
+              <span class="text-label text-crimson">
                 {String(region.cities.length).padStart(2, "0")}
               </span>
             </h3>
