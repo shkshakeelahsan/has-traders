@@ -5,7 +5,7 @@
 
 export const ABOUT = {
   intro:
-    "Established in 2024, HAS Traders supports public and private-sector clients with integrated supply, events, marketing, technology and business services.",
+    "HAS Traders supports public and private-sector clients with integrated supply, events, marketing, technology and business services.",
   approach:
     "We combine a customer-first approach with disciplined project delivery, helping clients move from requirement to execution through one accountable partner.",
   focus: "Our focus: quality, responsiveness and long-term value.",
@@ -39,13 +39,6 @@ export const CERTIFICATES = [
     issuer: "Securities and Exchange Commission of Pakistan",
     detail:
       "HAS Traders (SMC-Private) Limited, incorporated under the Companies Act 2017. Corporate Unique Identification No. 0250240.",
-  },
-  {
-    src: "/img/cert-iso-9001.webp",
-    title: "ISO 9001:2015 — Quality Management Systems",
-    issuer: "G-CERTI, accredited by IAS / IAF",
-    detail:
-      "Held by DESI HATTI, our catering and events partner, covering food processing, packaging and food catering services.",
   },
 ] as const;
 
@@ -355,7 +348,6 @@ export const LEADERSHIP = {
     },
   ],
   narrative: [
-    "Led by CEO Sheikh Shakeel Ahsan, HAS Traders brings extensive leadership experience across telecommunications, delivery start-ups, FinTech and real estate.",
     "Supported by a multidisciplinary team with practical expertise in general order supplies, event management, marketing, technology and business consultancy, the company combines strategic insight with operational excellence to deliver tailored, high-quality solutions efficiently, professionally and with measurable results.",
   ],
 } as const;

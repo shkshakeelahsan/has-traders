@@ -109,11 +109,6 @@ const featured = PROJECTS.slice(0, 3);
                 <span class="text-lg leading-snug font-bold">
                   {service.name}
                 </span>
-                {service.partner && (
-                  <span class="label text-crimson mt-2 block">
-                    with {service.partner}
-                  </span>
-                )}
               </a>
             </li>
           ))
@@ -193,15 +188,14 @@ const featured = PROJECTS.slice(0, 3);
           delivery partners
         </h2>
       </div>
-      <ul class="mt-10 flex flex-wrap gap-x-3 gap-y-3">
-        {
-          CLIENTS.map((client) => (
-            <li class="border-rule text-mute hover:border-crimson hover:text-ink border px-4 py-2.5 text-sm transition-colors">
-              {client}
-            </li>
-          ))
-        }
-      </ul>
+      <img
+        src="/img/clients.webp"
+        alt="Client logos including Easypaisa, HIVE, Nishat Group, Hyundai, Zong, FrieslandCampina Engro, Barrick, Jazz, Ravi Urban Development Authority and Nestlé"
+        width="1672"
+        height="941"
+        loading="lazy"
+        class="border-rule mt-10 w-full border"
+      />
     </div>
   </section>
 

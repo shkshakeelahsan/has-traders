@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
-import { CLIENTS, SECTORS } from "../data/content";
+import { SECTORS } from "../data/content";
 ---
 
 <Base
@@ -11,21 +11,20 @@ import { CLIENTS, SECTORS } from "../data/content";
   <PageHero
     eyebrow="Our clients"
     title="Supporting leading institutions and brands"
-    lede="Through our network of delivery partners, we serve international organizations, government bodies, industry and consumer brands — a portfolio that highlights our versatility and proven execution."
+    lede="We serve international organizations, government bodies, industry and consumer brands — a portfolio that highlights our versatility and proven execution."
   />
 
   <section aria-labelledby="wall" class="border-rule bg-surface border-b">
     <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
       <h2 id="wall" class="eyebrow">Organisations served</h2>
-      <ul class="bg-rule mt-8 grid gap-px sm:grid-cols-2 lg:grid-cols-4">
-        {
-          CLIENTS.map((client) => (
-            <li class="bg-surface hover:bg-crimson-wash px-5 py-4 text-sm transition-colors">
-              {client}
-            </li>
-          ))
-        }
-      </ul>
+      <img
+        src="/img/clients.webp"
+        alt="Client logos: Easypaisa, HIVE, Nishat Group, Hyundai, General Electric, Zong, Osaka Batteries, FrieslandCampina Engro, Aab-e-Pak, Barrick, Treet Corporation, Jazz, Pakistan Army, Telecom Operators' Association, Ravi Urban Development Authority and Nestlé"
+        width="1672"
+        height="941"
+        loading="lazy"
+        class="border-rule mt-8 w-full border"
+      />
     </div>
   </section>
 
