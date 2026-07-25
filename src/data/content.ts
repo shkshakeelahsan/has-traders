@@ -327,24 +327,38 @@ export const LEADERSHIP = {
   headline: "Leadership built for multidisciplinary delivery",
   people: [
     {
-      name: "Shakeel Ahsan",
-      role: "CEO",
+      name: "Sheikh Shakeel Ahsan",
+      role: "Chief Executive Officer",
       image: "/img/leadership/shakeel-ahsan.webp",
+      bio: [
+        "Sheikh Shakeel Ahsan is a strategic business leader with over 13 years of diverse experience across telecommunications, fintech, technology startups, real estate, and brand development. Throughout his career, he has worked with leading organizations including Zong, Telenor, and Emaar, driving initiatives across integrated marketing, business growth, digital transformation, and customer engagement.",
+        "With extensive expertise in building brands, developing go-to-market strategies, managing large-scale campaigns, and creating growth opportunities, Shakeel has successfully led projects spanning corporate communications, digital platforms, performance marketing, and market expansion. His experience working with startups and established organizations has equipped him with the ability to combine entrepreneurial thinking with structured business execution.",
+        "As the CEO of HAS Traders, Shakeel brings together strategic vision, operational leadership, and a strong network of industry expertise to deliver innovative solutions across general order supplies, event management, marketing, technology, and business consultancy. His focus remains on creating value-driven partnerships and delivering measurable results through professionalism, agility, and excellence.",
+      ],
     },
     {
       name: "Khaavar Tehseen",
-      role: "P.D Logistics",
+      role: "Project Director, Logistics",
       image: "/img/leadership/khaavar-tehseen.webp",
+      bio: [
+        "With over 25 years of professional experience, Khaavar Tehseen brings extensive leadership expertise gained through working with multinational organizations across diverse sectors, including banking, financial management, real estate, and non-profit organizations. Throughout his career, he has successfully managed and delivered multiple strategic projects, combining strong business acumen, operational expertise, and stakeholder management skills. His ability to navigate complex environments and drive sustainable outcomes adds significant value to HAS Traders' strategic direction and execution capabilities.",
+      ],
     },
     {
-      name: "Sarosh Raja",
-      role: "P.D Events & Technology",
+      name: "Sarosh Tasneem Raja",
+      role: "Project Director, Events & Technology",
       image: "/img/leadership/sarosh-raja.webp",
+      bio: [
+        "Sarosh Tasneem Raja brings over 12 years of experience in the technology sector, with a strong professional background spanning telecommunications and gaming industries. She has successfully spearheaded multiple technology-driven projects, ensuring seamless planning, execution, and delivery. With expertise in project management, process optimization, and cross-functional collaboration, Sarosh plays a key role in transforming ideas into efficiently executed solutions while maintaining high standards of quality and innovation.",
+      ],
     },
     {
       name: "Verdah Sheikh",
-      role: "P.D Marketing",
+      role: "Project Director, Marketing",
       image: "/img/leadership/verdah-sheikh.webp",
+      bio: [
+        "Despite being one of the youngest members of the leadership team, Verdah Sheikh's passion, dedication, and drive enabled her to enter the professional environment at an early stage and build remarkable expertise. A dynamic marketing professional with a strong understanding of consumer behavior, branding, and communication strategies, she knows how to create impact and amplify a message effectively. With extensive experience in event management, she has successfully managed and executed diverse projects ranging from corporate trainings to large-scale public events, bringing creativity, energy, and precision to every initiative.",
+      ],
     },
   ],
   narrative: [

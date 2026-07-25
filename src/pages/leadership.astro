@@ -2,36 +2,82 @@
 import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
 import { LEADERSHIP } from "../data/content";
+
+const [ceo, ...directors] = LEADERSHIP.people;
 ---
 
 <Base title="Leadership" description={LEADERSHIP.narrative[0]}>
-  <PageHero
-    eyebrow="Leadership"
-    title={LEADERSHIP.headline}
-    lede={LEADERSHIP.narrative[0]}
-  />
+  <PageHero eyebrow="Leadership" title={LEADERSHIP.headline} />
 
-  <section
-    aria-label="Leadership team"
-    class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20"
-  >
-    <ul class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-      {
-        LEADERSHIP.people.map((person) => (
-          <li>
+  <section aria-labelledby="team" class="border-rule border-b">
+    <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+      <h2 id="team" class="sr-only">Leadership team</h2>
+
+      <ul class="bg-rule grid gap-px sm:grid-cols-3">
+        <!-- Featured: CEO gets a full-width row, sticky portrait beside a
+             three-paragraph bio. -->
+        <li class="bg-paper p-8 sm:col-span-3 sm:p-10">
+          <article class="grid gap-8 lg:grid-cols-[0.4fr_0.6fr] lg:gap-14">
             <img
-              src={person.image}
+              src={ceo.image}
               alt=""
               width="640"
               height="640"
               loading="lazy"
-              class="aspect-square w-full object-cover"
+              class="aspect-square w-full max-w-sm object-cover lg:sticky lg:top-28 lg:self-start"
             />
-            <h2 class="mt-4 text-lg font-bold">{person.name}</h2>
-            <p class="label text-crimson mt-1">{person.role}</p>
-          </li>
-        ))
-      }
-    </ul>
+            <div>
+              <p class="label text-crimson">01</p>
+              <h3 class="text-h2 mt-3 font-bold">{ceo.name}</h3>
+              <p class="label text-mute mt-2">{ceo.role}</p>
+              <div class="mt-6 max-w-prose space-y-5">
+                {
+                  ceo.bio.map((paragraph, index) => (
+                    <p
+                      class:list={[
+                        "leading-relaxed",
+                        index === 0 && "text-lede",
+                      ]}
+                    >
+                      {paragraph}
+                    </p>
+                  ))
+                }
+              </div>
+            </div>
+          </article>
+        </li>
+
+        <!-- The three directors, one short bio each, in an even grid. -->
+        {
+          directors.map((person, index) => (
+            <li class="bg-paper flex flex-col p-8 sm:p-10">
+              <img
+                src={person.image}
+                alt=""
+                width="640"
+                height="640"
+                loading="lazy"
+                class="aspect-square w-full object-cover"
+              />
+              <p class="label text-crimson mt-6">
+                {String(index + 2).padStart(2, "0")}
+              </p>
+              <h3 class="mt-3 text-lg font-bold">{person.name}</h3>
+              <p class="label text-mute mt-1">{person.role}</p>
+              <p class="mt-4 text-sm leading-relaxed sm:text-base">
+                {person.bio[0]}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+    <p class="rule-mark text-lede text-mute max-w-3xl leading-relaxed">
+      {LEADERSHIP.narrative[0]}
+    </p>
   </section>
 </Base>
